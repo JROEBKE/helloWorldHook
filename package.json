@@ -1,0 +1,27 @@
+{
+  "name": "helloWorldHook",
+  "version": "1.0.0",
+  "description": "This is a small application to provide hello world in a specific hook format",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jonas Roebke",
+  "license": "MIT",
+  "bugs": {
+    "url": "getintouchwithjonas@gmail.com"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.16.2",
+    "express-basic-auth": "^1.2.0",
+    "express-validator": "^6.2.0",
+    "helmet": "^3.9.0",
+    "minimist": "*",
+    "mocha": "^6.2.0",
+    "swagger-jsdoc": "^1.9.7",
+    "swagger-ui": "^3.4.1"
+  }
+}
