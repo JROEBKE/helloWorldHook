@@ -54,35 +54,25 @@ router.get('/api/v1/getHelloWorld',[
 *       - helloWorld
 *     description: Returns hello "person" in a specific format
 *     produces:
-*       - text/json
-*     consumes:
 *       - application/json
+*     consumes:
+*       - application/x-www-form-urlencoded
 *     parameters:
-*       - name: data
-*         in: body
+*       - in: formData
+*         name: person
 *         required: true
 *         type: string
-*         schema:
-*           $ref: '#/definitions/Data'
+*         example: world
 *     responses:
 *       200:
-*         description: greeting response
+*        description: Ok
+*        example: {"status": "success", "raw_output": [{"output_variable": "lang","output_value": "en-GB"},{"output_variable": "person","output_value": "world"}],"chatbot_response": "Hello world!"}
+*       422:
+*         description: input validation error
+*         example: {"status": "error","message": "validation error","chatbot_response": "Sorry someting went wrong"}
+*
 *
 */
 router.post('/api/v1/helloWorldHook',[
   check('person', 'You have to provide a peson name with at least one character').trim().escape().not().isEmpty().isLength({min: 1, max:100}).withMessage('Please not more than 100 characters')
   ], apiController.helloWorldHook);
-
-/**
-* @swagger
-*  definitions:
-*   Data:
-*     type: object
-*     required:
-*       - person
-*     properties:
-*       person:
-*         description: provide person
-*         type: string
-*         example: world
-*/

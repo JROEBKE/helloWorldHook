@@ -8,7 +8,7 @@ const express    = require('express');
   helmet         = require('helmet'); //security validator
   swaggerJSDoc   = require('swagger-jsdoc'); //swagger API doc
   basicAuth      = require('express-basic-auth');
-
+  bodyParser     = require('body-parser');
 // configure our application ===================
 
 // tell express where to look for static assets
@@ -28,8 +28,8 @@ function myAuthorizer(username, password) {
 app.use(helmet())
 
 //body encoding
-app.use(express.json())
-
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Set var port = 8080 as default;
 var   port = process.env.PORT || 8080;

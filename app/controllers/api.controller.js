@@ -54,18 +54,25 @@ function helloWorldHook(req, res) {
 
     // validation error handling
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() })
       console.log(errors);
+      res.set('content-type', 'text/json');
+      res.status(422);
+      res.send({
+        status: "error",
+        message: "validation error",
+        chatbot_response: "Sorry someting went wrong"
+      });
     }
 
-    console.log('processing '+req.body);
+    console.log(req.body);
 
     // call request function with provided input with nameless callback function to send results back
     helloWorld(req.body, function(response){
       console.log("callback done");
-
       res.set('content-type', 'text/json');
+      res.status(200);
       res.send({
         status: "success",
         raw_output: [
