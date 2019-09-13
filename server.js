@@ -14,7 +14,7 @@ const express    = require('express');
 // tell express where to look for static assets
 app.use(express.static(__dirname + '/public'));
 
-/*/ activate basicAuth by fetching first username  & password from  env file and then check input vs. data
+/ activate basicAuth by fetching first username  & password from  env file and then check input vs. data
 const Password =  process.env.PASSWORD;
 const User =  process.env.USER;
 app.use(basicAuth({ authorizer: myAuthorizer, challenge: true } ))
@@ -23,13 +23,13 @@ function myAuthorizer(username, password) {
     const passwordMatches = basicAuth.safeCompare(password, Password)
     return userMatches & passwordMatches
 }
-*/
+
 //helmet security
 app.use(helmet())
 
 //body encoding
 app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies, necessary for hook
 
 //Set var port = 8080 as default;
 var   port = process.env.PORT || 8080;
