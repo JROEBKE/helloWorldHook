@@ -23,6 +23,6 @@
     "helmet": "^3.9.0",
     "minimist": "*",
     "swagger-jsdoc": "^1.9.7",
-    "swagger-ui": "^3.4.1"
+    "swagger-ui": "^4.1.2"
   }
 }
